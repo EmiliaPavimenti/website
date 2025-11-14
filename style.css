@@ -538,7 +538,7 @@ a.icon-item-link {
 /* --- PAGINA CONTATTI --- */
 .contact-grid {
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
+    grid-template-columns: 1fr;
     gap: 50px;
     background-color: var(--light-gray);
     padding: 40px;

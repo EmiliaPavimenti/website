@@ -22,20 +22,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 2. Gestione Dropdown su mobile
     const dropdowns = document.querySelectorAll('.nav-links .dropdown > a');
-    
+
     dropdowns.forEach(dropdownAnchor => {
         dropdownAnchor.addEventListener('click', function(e) {
             // Funziona solo se il menu mobile è visibile
             if (window.getComputedStyle(menuToggle).display !== 'none') {
-                const parentLi = this.parentElement;
                 
-                // Previene la navigazione del link principale "Pavimentazioni"
-                if(this.getAttribute('href') === 'pavimentazioni.html' || this.getAttribute('href') === '#') {
-                     e.preventDefault(); 
-                }
-               
+                // SU MOBILE: Impedisce sempre la navigazione del link genitore
+                e.preventDefault(); 
+                
+                const parentLi = this.parentElement;
                 parentLi.classList.toggle('active');
             }
+            // Su desktop, l'if non viene eseguito e il link funziona normalmente
         });
     });
 
