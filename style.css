@@ -177,16 +177,22 @@ img {
     gap: 25px; /* Spazio tra logo e bollino */
 }
 
-/* Stile per il bollino in navbar */
 .navbar-bollino {
-    display: block; /* Assicura che sia visibile */
-}
-.navbar-bollino img {
-    height: 90px; /* Altezza di default (mobile), allineata al logo-img mobile */
-    width: auto;
+    --bollino-height: 50px; /* Unica altezza per entrambi i bollini (desktop) */
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-/* MODIFICA: Rimossa la regola .nav-links duplicata e interrotta */
+/* Entrambi i bollini hanno la stessa altezza: le immagini sono ritagliate sul bordo,
+   quindi stessa altezza = stessa dimensione visiva */
+.navbar-bollino img {
+    display: block;
+    height: var(--bollino-height);
+    width: auto;
+    flex-shrink: 0;
+}
+
 .nav-links {
     list-style: none;
     display: flex;
@@ -658,13 +664,6 @@ section#map iframe {
 
 /* --- RESPONSIVE --- */
 
-/* Regola dimensione bollino per tablet e desktop */
-@media (min-width: 769px) {
-    .navbar-bollino img {
-        height: 90px; /* Allinea all'altezza del logo (50px) */
-    }
-}
-
 @media (max-width: 992px) {
     h1 { font-size: 2.8rem; }
     .hero-title { font-size: 3rem; }
@@ -696,6 +695,8 @@ section#map iframe {
 
     .navbar { padding: 0 20px; } /* Meno padding su mobile */
     .logo-img { height: 40px; }
+    .navbar-bollino { --bollino-height: 40px; gap: 10px; }
+    .navbar-left-group { gap: 15px; }
 
     .menu-toggle {
         display: block;
